@@ -10,8 +10,9 @@ export default {
     extend: {
       colors: {
        "primary" : "#336E2E",
-       "secondary" : "#1A402B"
-      },
+       "secondary" : "#1A402B",
+       "background": "#F1FBFB" 
+          },
     },
   },
   plugins: [],
