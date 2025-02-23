@@ -6,6 +6,8 @@ import Button from "./components/ui/Button";
 import { useUserRoleStore } from "./store/store";
 import localFont from "next/font/local"
 import DigitalPharmacySection from "./components/ui/DigitalPharmacySection";
+import ServiceCard from "./components/ui/ServiceCard";
+import TestimonialCard from "./components/ui/TestimonialCard"
 
 // Grifter font setup
 const headerFont = localFont({
@@ -36,6 +38,25 @@ const coinElements = [
   { id: 3, top: "38%", left: "85%", delay: 2.5, size: 70 },
 ];
 
+
+
+const servicesData = {
+  title: "Global Medication Management and Payment System",
+  features: [
+    {
+      title: "Medication Management",
+      description: "Easily manage your prescriptions and discover trusted pharmacies near you, ensuring a convenient healthcare experience every time."
+    },
+    {
+      title: "Effortless Payments",
+      description: "Make secure payments for medications from anywhere in the world, with fast, easy, and reliable transactions using stablecoins."
+    },
+    {
+      title: "Global Healthcare",
+      description: "Send essential medications to your loved ones, no matter where they are, with just a few clicks and secure payment options."
+    }
+  ]
+};
 export default function Home() {
   const { isPharmacist } = useUserRoleStore();
   const [showElements, setShowElements] = useState(false);
@@ -324,7 +345,22 @@ export default function Home() {
     className="w-full h-[600px] object-contain"
   />
 </div>
+<div className="flex flex-col justify-center items-center">
+{
+  servicesData.features.map((service, index)=>(
+    <ServiceCard key={index} serviceTitle={service.title} serviceDesc={service.description}/>
+  ))
+}
+</div>
        </section>
+
+       <section className="flex flex-col justify-center items-center gap-4">
+        <h2 className={`${headerFont.className} text-3xl`}>Testimonials</h2>
+        <span className="text-sm bg-gray-300 border-gray-500 shadow-md px-5 py-2 rounded-full">Don't just take our word for it</span>
+        <div className="flex flex-col md:flex-row justify-center items-between">
+          <TestimonialCard TestimonialName="Stella James" testimonial="Lorem ipsumdo that stuff and get the hell out" testimonialDate="May 14, 2004" profileImg="/profile1.svg"/>
+        </div>
+        </section>
       </main>
     ) : (
       <div className="min-h-screen flex items-center justify-center bg-green-50">
