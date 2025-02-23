@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import localFont from "next/font/local"
+
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 
 
 //Initializing font variables
-const DMSans = DM_Sans({
+const Manrope_Font = DM_Sans({
   subsets: ["latin"],
   weight: "400"
 });
 
-export const headerFont = localFont({
-  src:"./fonts/grifterbold700.otf",
-})
+
 export const metadata: Metadata = {
   title: "Kura Bill",
   description: "",
@@ -27,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${DMSans.className} antialiased`}
+        className={` ${Manrope_Font.className} antialiased`}
       >
         <Navbar/>
         {children}
