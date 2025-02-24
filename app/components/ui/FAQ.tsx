@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
+import { CirclePlus , CircleMinus} from "lucide-react";
 
 interface FAQType{
     question: string,
@@ -29,16 +30,13 @@ const FAQ:React.FC<FAQType> = ({question, answer}) => {
         {
                     open ? (
                             <span onClick={hideAnswer} className="hover:cursor-pointer">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-</svg>
-
+                               
+                               <CircleMinus/>
                             </span>
                     ): (
                         <span onClick={makeAnswerVisible} className=" hover:text-primary hover:cursor-pointer">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                      </svg>
+
+<CirclePlus/>
                         </span>
                         
                     )

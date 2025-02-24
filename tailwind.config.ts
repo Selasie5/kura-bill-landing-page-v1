@@ -10,9 +10,9 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			'primary': '#336E2E',
-  			'secondary': '#1A402B',
-  			'background': '#F1FBFB',
+  			'primary-brand': '#336E2E',
+  			'secondary-brand': '#1A402B',
+  			'background-white': '#F1FBFB',
   			'subtext-gray': '#636865',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

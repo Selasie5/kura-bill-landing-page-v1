@@ -11,6 +11,7 @@ import TestimonialSection from "./components/layout/TestimonialSection";
 import FAQ from "./components/ui/FAQ";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Tag, Check} from 'lucide-react'
+import Footer from "./components/layout/Footer";
 
 
 // Grifter font setup
@@ -363,7 +364,7 @@ const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <motion.button 
-            className="bg-primary text-white text-sm font-normal px-7 py-3 rounded-full"
+            className="bg-primary-brand text-white text-sm font-normal px-7 py-3 rounded-full"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -379,7 +380,7 @@ const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
        
 
        <section className="flex flex-col justify-center items-center md:gap-3 bg-[#F4F6F5] md:p-20 p-5">
-        <div className="px-4 py-2 rounded-full bg-white border border-primary">
+        <div className="px-4 py-2 rounded-full bg-white border border-primary-brand">
           <span className="text-sm ">Our Services</span>
           </div>
           <div className="w-full">
@@ -676,7 +677,7 @@ Find the right plan
         
         </div>
 
-        <h3 className="text-2xl font-medium text-primary">Basic</h3>
+        <h3 className="text-2xl font-medium text-primary-brand">Basic</h3>
         <p className="text-md font-normal text-gray-300">Sell Digitally and Track Your Inventories</p>
 
 
@@ -708,14 +709,14 @@ Get a fully designed Admin Office
 </span>
               </div>
           </div>
-          <button className=" bg-white rounded-full w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-secondary hover:text-white mt-5">
+          <button className=" bg-white rounded-full w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-secondary-brand hover:text-white mt-5">
             Join the Waitlist
             </button>
            
       </div>
     {/* Pro */}
     <div className="flex flex-col justify-center items-center bg-gray-100 border border-gray-500 rounded-xl gap-12 h-[650px] w-[350px] px-6 py-3 hover:shadow-lg hover:scale-105">
-        <h3 className="text-2xl font-medium text-primary">Pro</h3>
+        <h3 className="text-2xl font-medium text-primary-brand">Pro</h3>
         <p className="text-md font-normal text-gray-300">Sell Digitally and Track Your Inventories</p>
 
         <p className="text-2xl font-medium">$ 12/<span className="text-xl">month</span></p>
@@ -746,13 +747,13 @@ Add other employees
 </span>
               </div>
           </div>
-          <button className=" bg-black rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary hover:text-white mt-5">
+          <button className=" bg-black rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary-brand hover:text-white mt-5">
             Join the Waitlist
             </button>
       </div>
     {/* Pro */}
     <div className="flex flex-col justify-center items-center bg-gray-100 border border-gray-500 rounded-xl gap-12 h-[650px] w-[350px] px-6 py-3 hover:shadow-lg hover:scale-105">
-        <h3 className="text-2xl font-medium text-primary">Enterprise</h3>
+        <h3 className="text-2xl font-medium text-primary-brand">Enterprise</h3>
         <p className="text-md font-normal text-gray-300">Sell Digitally and Track Your Inventories</p>
 
         <p className="text-2xl font-medium">$ 20/<span className="text-xl">month</span></p>
@@ -783,7 +784,7 @@ Add other employees
 </span>
               </div>
           </div>
-          <button className=" bg-primary rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary hover:text-white mt-5">
+          <button className=" bg-primary-brand rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary-brand hover:text-white mt-5">
             Join the Waitlist
             </button>
       </div>
@@ -791,6 +792,23 @@ Add other employees
 
 
           </section>
+
+          <TestimonialSection/>
+          <section className="flex flex-col justify-center items-center">
+            <h2
+            className={`${
+                headerFont.className 
+            }
+            text-3xl font-bold
+            `}
+            >Frequently Aksed Questions</h2>
+            <div className=" w-full flex flex-col justify-center items-center gap-4 md:px-24 px-5 py-5">
+            {faqData.map((faq, index)=>(
+    <FAQ key={index} question={faq.question} answer={faq.answer} />
+))}
+            </div>
+          </section>
+          
     </main>
     )
   );
