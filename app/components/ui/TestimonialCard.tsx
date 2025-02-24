@@ -8,7 +8,7 @@ const TestimonialCard = ({TestimonialName, testimonial, testimonialDate, profile
   profileImg:string
 }) => {
   return (
-    <div className="p-4 w-84 border border-primary bg-white rounded-md flex flex-col justify-between items-start gap-4 hover:scale-105 hover:shadow-lg hover:cursor-pointer ">
+    <div className="p-4 w-84  bg-white rounded-md flex flex-col justify-between items-start gap-4  hover:cursor-pointer ">
         <div className="flex justify-start items-start">
             <Image src={profileImg} alt="user-profile" width={50} height={50}/>
             <div className='flex flex-col justify-start items-center'>

@@ -7,13 +7,15 @@ import { useUserRoleStore } from "./store/store";
 import localFont from "next/font/local"
 import DigitalPharmacySection from "./components/ui/DigitalPharmacySection";
 import ServiceCard from "./components/ui/ServiceCard";
-import TestimonialCard from "./components/ui/TestimonialCard"
+import TestimonialSection from "./components/layout/TestimonialSection";
 import FAQ from "./components/ui/FAQ";
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Tag, Check} from 'lucide-react'
+
 
 // Grifter font setup
 const headerFont = localFont({
-  src: "./fonts/grifterbold700.otf",
+  src: "../app/fonts/grifterbold700.otf",
 })
 
 
@@ -398,17 +400,8 @@ const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
 }
 </div>
        </section>
-
-       <section className="flex flex-col justify-center items-center gap-4">
-        <h2 className={`${headerFont.className} text-3xl`}>Testimonials</h2>
-        <span className="text-sm bg-gray-300 border-gray-500 shadow-md px-5 py-2 rounded-full">Don't just take our word for it</span>
-        <h3
-        className="text-2xl font-semibold text-center w-4/5 md:w-full"
-      >Hear From Other Customers Who Use KuraBill </h3>
-        <div className="flex flex-col md:flex-row justify-center items-between">
-          <TestimonialCard TestimonialName="Stella James" testimonial="Lorem ipsumdo that stuff and get the hell out" testimonialDate="May 14, 2004" profileImg="/profile1.svg"/>
-        </div>
-        </section>
+<TestimonialSection/>
+      
         <section className="flex flex-col justify-center items-center">
             <h2
             className={`${
@@ -425,6 +418,7 @@ const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
           </section>
       </main>
     ) : (
+      <main>
       <div className="bg-green-900 overflow-hidden">
       {/* Hero section with text content */}
       <div className="min-h-screen flex flex-col justify-center items-center gap-4 bg-green-900 pb-32">
@@ -465,26 +459,16 @@ const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
             className="w-full flex justify-center px-4"
           >
             <div className="relative w-full max-w-5xl">
-              <img 
-                src="/api/placeholder/1000/500" 
+              <Image
+              width= {600}
+              height= {600}
+                src="/map.svg" 
                 alt="World map showing pharmacy connections" 
                 className="w-full object-contain rounded-lg"
               />
-              
-              {/* Pharmacy location markers */}
-              <div className="absolute left-[15%] top-[50%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-green-800 font-bold">J</span>
-              </div>
-              <div className="absolute left-[35%] top-[50%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-green-800 font-bold">N</span>
-              </div>
-              <div className="absolute left-[45%] top-[38%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-green-800 font-bold">C</span>
-              </div>
-              <div className="absolute left-[75%] top-[48%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-green-800 font-bold">L</span>
-              </div>
             </div>
+              
+
           </motion.div>
           
           {/* Dashboard overlaying the map */}
@@ -513,6 +497,301 @@ const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
         </div>
       </div>
     </div>
+    <section>
+          <div className="">
+            <h2 className={`${headerFont.className} text-3xl font-bold text-center mb-2`}>
+             Join 2K+ pharmacies boosting profits with Kura Bill
+            </h2>
+            <div className="flex justify-center items-center gap-4 flex-wrap">
+  <div className="flex justify-center items-center w-32 h-32">
+    <Image src="/logo1.svg" alt="Logo 1" width={80} height={80} className="object-contain" />
+  </div>
+  <div className="flex justify-center items-center w-32 h-32">
+    <Image src="/logo2.svg" alt="Logo 2" width={80} height={80} className="object-contain" />
+  </div>
+  <div className="flex justify-center items-center w-32 h-32">
+    <Image src="/logo3.svg" alt="Logo 3" width={80} height={80} className="object-contain" />
+  </div>
+  <div className="flex justify-center items-center w-32 h-32">
+    <Image src="/logo4.svg" alt="Logo 4" width={80} height={80} className="object-contain" />
+  </div>
+  <div className="flex justify-center items-center w-32 h-32">
+    <Image src="/logo5.svg" alt="Logo 5" width={80} height={80} className="object-contain" />
+  </div>
+  <div className="flex justify-center items-center w-32 h-32">
+    <Image src="/logo6.svg" alt="Logo 6" width={80} height={80} className="object-contain" />
+  </div>
+</div>
+          </div>
+        </section>
+
+        <section>
+        <div className="flex flex-col bg-gray-50 min-h-screen">
+      {/* Hero Section */}
+      <div className="px-6 md:px-12 lg:px-16 py-12 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left Content */}
+          <div>
+            <p className="text-gray-700 mb-2 font-medium">Go Digital & Sell to the world</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">X10 your Revenue with Kurabill</h1>
+            <p className="text-gray-600 mb-6">
+              Whatever you need, Kurabill is built with solutions in mind. Need to
+              customize further - no problem.
+            </p>
+          </div>
+
+          {/* Right Content - Dashboard Preview */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-medium">Sales Report</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              
+              {/* Chart Image */}
+              <div className="relative h-32 w-full mt-2">
+                <img src="/api/placeholder/300/150" alt="Sales chart" className="object-contain w-full h-full" />
+              </div>
+              
+              <div className="grid grid-cols-7 gap-1 text-xs text-gray-500 mt-2">
+                <div className="text-center">M</div>
+                <div className="text-center">T</div>
+                <div className="text-center">W</div>
+                <div className="text-center">T</div>
+                <div className="text-center">F</div>
+                <div className="text-center">S</div>
+                <div className="text-center">S</div>
+              </div>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-medium">Balance</h3>
+                <button className="bg-green-900 text-white text-sm px-3 py-1 rounded-full">Reserved</button>
+              </div>
+              
+              <p className="text-2xl font-bold text-gray-900 mb-6">$60,124.00</p>
+              
+              <div className="bg-green-100 rounded-md p-2 relative">
+                <div className="flex justify-between items-center">
+                  <div className="h-2 w-2 bg-green-700 rounded-full"></div>
+                  <div className="h-1 w-20 bg-green-700 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Features Section */}
+      <div className="px-6 md:px-12 lg:px-16 py-12 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Feature 1 */}
+            <div className="flex flex-col items-center md:items-start">
+              <div className="bg-gray-100 p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="22"></line>
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Sales Analytics</h3>
+              <p className="text-gray-600">
+                Track, analyze, and optimize your pharmacy's sales performance with Kurabill's powerful analytics tools.
+              </p>
+            </div>
+            
+            {/* Feature 2 */}
+            <div className="flex flex-col items-center md:items-start">
+              <div className="bg-gray-100 p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="M2 12h2"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Transparency</h3>
+              <p className="text-gray-600">
+                Clear insights and open communication for seamless pharmacy management.
+              </p>
+            </div>
+            
+            {/* Feature 3 */}
+            <div className="flex flex-col items-center md:items-start">
+              <div className="bg-gray-100 p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Customer Focus</h3>
+              <p className="text-gray-600">
+                Putting your customers at the heart of every solution we provide.
+              </p>
+            </div>
+            
+            {/* Feature 4 */}
+            <div className="flex flex-col items-center md:items-start">
+              <div className="bg-gray-100 p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Market Expansion</h3>
+              <p className="text-gray-600">
+                Unlock new opportunities and reach more customers across borders
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </section>
+{/* 
+Pricing */}
+        <section className="flex flex-col items-center justify-center gap-4">
+
+          {/* Tag */}
+          <span className="flex justify-center items-center text-sm bg-gray-200 border border-gray-400 px-3 py-2 gap-3 rounded-full"
+>
+  <Tag
+  size={12}
+  />
+  Pricing
+</span>
+<h2 className={`${headerFont.className} text-2xl`}>
+Find the right plan
+  </h2>
+  <p className="text-gray-400 text-sm w-1/2 text-center">Invest in your Business's future with our comprehensive pharmacy solution. Contact us for pricing details and see how we can help you streamline your finances and reach your business goals.</p>
+  <div className="grid grid-cols-1 md:grid-cols-3 place-items-center gap-10">
+
+    {/* Basic */}
+    <div className="flex flex-col justify-center items-center bg-gray-100 border border-gray-500 rounded-xl gap-12 h-[650px] w-[350px] px-6 py-3 hover:shadow-lg hover:scale-105">
+      <div>
+        
+        </div>
+
+        <h3 className="text-2xl font-medium text-primary">Basic</h3>
+        <p className="text-md font-normal text-gray-300">Sell Digitally and Track Your Inventories</p>
+
+
+        <p className="text-2xl font-medium">$ 0/<span className="text-xl">month</span></p>
+
+        <div className="flex flex-col justify-start items-start gap-5">
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Get a fully designed Admin Office
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Make money in USD & withdraw to your local bank
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12} />
+<span>
+Limited support
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2 text-gray-100">
+<Check size={12}/>
+<span>
+Get a fully designed Admin Office
+</span>
+              </div>
+          </div>
+          <button className=" bg-white rounded-full w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-secondary hover:text-white mt-5">
+            Join the Waitlist
+            </button>
+           
+      </div>
+    {/* Pro */}
+    <div className="flex flex-col justify-center items-center bg-gray-100 border border-gray-500 rounded-xl gap-12 h-[650px] w-[350px] px-6 py-3 hover:shadow-lg hover:scale-105">
+        <h3 className="text-2xl font-medium text-primary">Pro</h3>
+        <p className="text-md font-normal text-gray-300">Sell Digitally and Track Your Inventories</p>
+
+        <p className="text-2xl font-medium">$ 12/<span className="text-xl">month</span></p>
+
+        <div className="flex flex-col justify-start items-start gap-5">
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Get a fully designed Admin Office
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Make money in USD & withdraw to your local bank
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Limited support
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Add other employees
+</span>
+              </div>
+          </div>
+          <button className=" bg-black rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary hover:text-white mt-5">
+            Join the Waitlist
+            </button>
+      </div>
+    {/* Pro */}
+    <div className="flex flex-col justify-center items-center bg-gray-100 border border-gray-500 rounded-xl gap-12 h-[650px] w-[350px] px-6 py-3 hover:shadow-lg hover:scale-105">
+        <h3 className="text-2xl font-medium text-primary">Enterprise</h3>
+        <p className="text-md font-normal text-gray-300">Sell Digitally and Track Your Inventories</p>
+
+        <p className="text-2xl font-medium">$ 20/<span className="text-xl">month</span></p>
+
+        <div className="flex flex-col justify-start items-start gap-5">
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Get a fully designed Admin Office
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Make money in USD & withdraw to your local bank
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Get Full Support
+</span>
+              </div>
+            <div className="flex justify-start items-center gap-2">
+<Check size={12}/>
+<span>
+Add other employees
+</span>
+              </div>
+          </div>
+          <button className=" bg-primary rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary hover:text-white mt-5">
+            Join the Waitlist
+            </button>
+      </div>
+    </div>
+
+
+          </section>
+    </main>
     )
   );
 }
