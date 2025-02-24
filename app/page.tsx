@@ -1,18 +1,22 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+
 import Button from "./components/ui/Button";
 import { useUserRoleStore } from "./store/store";
 import localFont from "next/font/local"
 import DigitalPharmacySection from "./components/ui/DigitalPharmacySection";
 import ServiceCard from "./components/ui/ServiceCard";
 import TestimonialCard from "./components/ui/TestimonialCard"
+import FAQ from "./components/ui/FAQ";
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 // Grifter font setup
 const headerFont = localFont({
   src: "./fonts/grifterbold700.otf",
 })
+
+
 
 
 const mapElements = [
@@ -57,9 +61,50 @@ const servicesData = {
     }
   ]
 };
+
+//FAQ Questions
+const faqData = [
+  {
+    question: "How long does my order take?",
+    answer: "Orders typically take 3-5 business days to process and ship, but delivery times may vary based on your location and selected shipping method. You'll receive a tracking number as soon as your order is on its way!"
+  },
+  {
+    question: "How can I track my order?",
+    answer: "You can track your order by logging into your account and visiting the 'Order History' section. Alternatively, click the tracking link in your shipping confirmation email. Our system updates tracking information every 24 hours."
+  },
+  {
+    question: "How do I buy medications for my family?",
+    answer: "To purchase medications for family members, you'll need to create separate profiles for each person under your account. Each profile should include their full name, date of birth, and any allergies or current medications. For prescription medications, valid prescriptions must be uploaded for each individual."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and Apple Pay. For orders over $200, we also offer financing options through Affirm and Klarna with approval."
+  },
+  {
+    question: "What is your return policy?",
+    answer: "We offer a 30-day satisfaction guarantee on most products. If you're not completely satisfied, you can return unused items in their original packaging for a full refund. Please note that certain health products and medications cannot be returned once opened due to safety regulations."
+  }
+];
 export default function Home() {
   const { isPharmacist } = useUserRoleStore();
   const [showElements, setShowElements] = useState(false);
+  const [openIndex, setOpenIndex] = useState(0);
+const toggleFAQ = (index:number) => {
+  setOpenIndex(openIndex === index ? -1 : index);
+};
+
+
+
+const dashboardRef = useRef(null);
+const { scrollYProgress } = useScroll({
+  target: dashboardRef,
+  offset: ["start end", "end start"]
+});
+
+// Transform values for the dashboard perspective animation
+const perspective = useTransform(scrollYProgress, [0, 0.5], [1000, 0]);
+const rotateX = useTransform(scrollYProgress, [0, 0.5], [15, 0]);
+const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
 
   useEffect(() => {
     // Start animation sequence after a short delay
@@ -331,7 +376,7 @@ export default function Home() {
   </section>
        
 
-       <section className="flex flex-col justify-center items-center gap-3 bg-[#F4F6F5] p-20">
+       <section className="flex flex-col justify-center items-center md:gap-3 bg-[#F4F6F5] md:p-20 p-5">
         <div className="px-4 py-2 rounded-full bg-white border border-primary">
           <span className="text-sm ">Our Services</span>
           </div>
@@ -342,7 +387,7 @@ export default function Home() {
     width={0}
     height={0}
     sizes="100vw"
-    className="w-full h-[600px] object-contain"
+    className="w-full md:h-[600px] h-[300px] object-contain"
   />
 </div>
 <div className="flex flex-col justify-center items-center">
@@ -357,22 +402,117 @@ export default function Home() {
        <section className="flex flex-col justify-center items-center gap-4">
         <h2 className={`${headerFont.className} text-3xl`}>Testimonials</h2>
         <span className="text-sm bg-gray-300 border-gray-500 shadow-md px-5 py-2 rounded-full">Don't just take our word for it</span>
+        <h3
+        className="text-2xl font-semibold text-center w-4/5 md:w-full"
+      >Hear From Other Customers Who Use KuraBill </h3>
         <div className="flex flex-col md:flex-row justify-center items-between">
           <TestimonialCard TestimonialName="Stella James" testimonial="Lorem ipsumdo that stuff and get the hell out" testimonialDate="May 14, 2004" profileImg="/profile1.svg"/>
         </div>
         </section>
+        <section className="flex flex-col justify-center items-center">
+            <h2
+            className={`${
+                headerFont.className 
+            }
+            text-3xl font-bold
+            `}
+            >Frequently Aksed Questions</h2>
+            <div className=" w-full flex flex-col justify-center items-center gap-4 md:px-24 px-5 py-5">
+            {faqData.map((faq, index)=>(
+    <FAQ key={index} question={faq.question} answer={faq.answer} />
+))}
+            </div>
+          </section>
       </main>
     ) : (
-      <div className="min-h-screen flex items-center justify-center bg-green-50">
+      <div className="bg-green-900 overflow-hidden">
+      {/* Hero section with text content */}
+      <div className="min-h-screen flex flex-col justify-center items-center gap-4 bg-green-900 pb-32">
         <motion.h1
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={`${headerFont.className} text-3xl text-green-800`}
+          className={`${headerFont.className} text-[2.5rem] md:text-[3rem] leading-tight text-center text-white`}
         >
-          Hello Pharmacist Dashboard
+          Setup A Digital Pharmacy with KuraBill
         </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-white leading-normal text-center w-full md:w-3/4 max-w-3xl px-4"
+        >
+          Transform your pharmacy into a digital hub with Kurabill streamline orders, manage
+          prescriptions, and offer secure online payments, all in one platform
+        </motion.p>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mb-16"
+        >
+          <Button />
+        </motion.div>
+        
+        {/* Map visualization with overlapping dashboard */}
+        <div className="relative w-full">
+          {/* World Map */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="w-full flex justify-center px-4"
+          >
+            <div className="relative w-full max-w-5xl">
+              <img 
+                src="/api/placeholder/1000/500" 
+                alt="World map showing pharmacy connections" 
+                className="w-full object-contain rounded-lg"
+              />
+              
+              {/* Pharmacy location markers */}
+              <div className="absolute left-[15%] top-[50%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="text-green-800 font-bold">J</span>
+              </div>
+              <div className="absolute left-[35%] top-[50%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="text-green-800 font-bold">N</span>
+              </div>
+              <div className="absolute left-[45%] top-[38%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="text-green-800 font-bold">C</span>
+              </div>
+              <div className="absolute left-[75%] top-[48%] w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span className="text-green-800 font-bold">L</span>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Dashboard overlaying the map */}
+          <div 
+            ref={dashboardRef} 
+            className="w-full flex justify-center"
+            style={{ marginTop: "-15%" }}
+          >
+            <motion.div
+              style={{ 
+                perspective: perspective,
+                rotateX: rotateX,
+                opacity: opacity
+              }}
+              className="w-full max-w-4xl px-4"
+            >
+              <Image
+                src="/dashboard.svg" 
+                width={600}
+                height={600}
+                alt="KuraBill dashboard interface" 
+                className="w-full rounded-lg shadow-2xl"
+              />
+            </motion.div>
+          </div>
+        </div>
       </div>
+    </div>
     )
   );
 }
