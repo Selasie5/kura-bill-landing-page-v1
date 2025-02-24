@@ -13,6 +13,7 @@ export default {
   			'primary-brand': '#336E2E',
   			'secondary-brand': '#1A402B',
   			'background-white': '#F1FBFB',
+			"dark-green": "#202F26",
   			'subtext-gray': '#636865',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

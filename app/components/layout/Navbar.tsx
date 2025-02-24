@@ -16,7 +16,7 @@ const Navbar = () => {
     <motion.nav 
       className="w-full p-4"
       animate={{
-        backgroundColor: isPharmacist ? '#202F6' : '#F1FBFB'
+        backgroundColor: isPharmacist ? '#202F26' : '#F1FBFB'
       }}
       transition={{ duration: 0.5 }}
     >
