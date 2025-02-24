@@ -515,10 +515,10 @@ export default function Home() {
       </section>
     </main>
   ) : (
-    <main className="space-y-36">
+    <main className="space-y-36 ">
       <div className="bg overflow-hidden">
         {/* Hero section with text content */}
-        <div className="h-auto flex flex-col justify-center items-center gap-4 bg-[#202F26] pt-48">
+        <div className="h-auto flex flex-col justify-center items-center gap-4 bg-[#202F26] pt-24 md:pt-48 md:px-0 px-3">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -593,7 +593,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section>
+      <section className="px-5">
         <div className="">
           <h2
             className={`${headerFont.className} text-3xl font-bold text-center mb-1 mt-2`}
@@ -659,7 +659,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section> 
+      <section className="px-5"> 
         {/* Hero Section */}
         <div className="px-6 md:px-12 lg:px-16 py-12 max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -797,7 +797,7 @@ export default function Home() {
       </section>
       {/* 
 Pricing */}
-      <section className="flex flex-col items-center justify-center gap-4">
+      <section className="flex flex-col items-center justify-center gap-4 px-5">
         {/* Tag */}
         <span className="flex justify-center items-center text-sm bg-gray-200 border border-gray-400 px-3 py-2 gap-3 rounded-full">
           <Tag size={12} />
@@ -806,7 +806,7 @@ Pricing */}
         <h2 className={`${headerFont.className} text-2xl`}>
           Find the right plan
         </h2>
-        <p className="text-gray-400 text-sm w-1/2 text-center">
+        <p className="text-gray-400 text-sm md:w-1/2 text-center">
           Invest in your Business's future with our comprehensive pharmacy
           solution. Contact us for pricing details and see how we can help you
           streamline your finances and reach your business goals.
@@ -919,7 +919,7 @@ Pricing */}
       </section>
 
       <TestimonialSection />
-      <section className="flex flex-col justify-center items-center">
+      <section className="flex flex-col justify-center items-center px-5">
         <h2
           className={`${headerFont.className}
             text-3xl font-bold
