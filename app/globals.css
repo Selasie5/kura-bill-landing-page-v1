@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.subtext{
+body{
     font-family: "DM Sans", sans-serif;
 }
 

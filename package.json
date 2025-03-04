@@ -13,6 +13,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.2",
+    "fontsource-dm-sans": "^4.0.0",
     "framer-motion": "^12.4.7",
     "kura-bill": "file:",
     "lucide-react": "^0.476.0",
