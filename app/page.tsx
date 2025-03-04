@@ -148,7 +148,7 @@ const faqData = [
 export default function Home() {
   const { isPharmacist } = useUserRoleStore();
   const [showElements, setShowElements] = useState(false);
-  const [openIndex, setOpenIndex] = useState(0);
+  // const [openIndex, setOpenIndex] = useState(0);
 
   const dashboardRef = useRef(null);
   const { scrollYProgress } = useScroll({

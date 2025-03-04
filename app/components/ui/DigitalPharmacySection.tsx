@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import localFont from 'next/font/local';
-
+import Image from "next/image"
 // Grifter font setup
 const headerFont = localFont({
   src: "../../fonts/grifterbold700.otf",
