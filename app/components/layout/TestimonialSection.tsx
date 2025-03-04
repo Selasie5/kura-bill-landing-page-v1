@@ -44,7 +44,7 @@ const TestimonialSection = () => {
       </h2>
       
       <span className="text-sm bg-gray-300 border-gray-500 shadow-md px-5 py-2 rounded-full">
-        Don't just take our word for it
+        Don&apos;t just take our word for it
       </span>
       
       <h3 className="text-2xl font-semibold text-center w-4/5 md:w-full">

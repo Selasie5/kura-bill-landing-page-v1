@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import localFont from 'next/font/local';
-import Button from "./Button";
 
 // Grifter font setup
 const headerFont = localFont({
@@ -65,7 +64,7 @@ export const DigitalPharmacySection = () => {
               animate={{ opacity: animationState >= 1 ? 1 : 0 }}
               transition={{ duration: 0.4 }}
             >
-              <img src="/cursor.svg" alt="Global Healthcare" className="rounded-full" />
+            <Image src="/cursor.svg" alt="Global Healthcare" width={24} height={24} className="rounded-full" />
             </motion.div>
             
             {/* Hi Temidayo message - as an image */}
@@ -78,7 +77,7 @@ export const DigitalPharmacySection = () => {
               }}
               transition={{ duration: 0.5 }}
             >
-              <img src="/temidayo.svg" alt="Hi Temidayo Message" className="rounded-lg shadow-md" />
+            <Image src="/temidayo.svg" alt="Hi Temidayo Message" width={200} height={100} className="rounded-lg shadow-md" />
             </motion.div>
             
             {/* Arrow pointing down - as an SVG */}
@@ -106,7 +105,7 @@ export const DigitalPharmacySection = () => {
               }}
               transition={{ duration: 0.7 }}
             >
-              <img src="/transactionCard.svg" alt="Transactions Component with Alerts" className="rounded-lg shadow-md" />
+            <Image src="/transactionCard.svg" alt="Transactions Component with Alerts" width={200} height={100} className="rounded-lg shadow-md" />
             </motion.div>
             
             {/* Character on bottom right - as an image */}
@@ -116,7 +115,7 @@ export const DigitalPharmacySection = () => {
               animate={{ opacity: animationState >= 3 ? 1 : 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <img src="/api/placeholder/48/48" alt="Character" className="rounded-full" />
+            <Image src="/api/placeholder/48/48" alt="Character" width={48} height={48} className="rounded-full" />
             </motion.div>
             
             {/* Character on bottom left - as an image */}
@@ -126,7 +125,7 @@ export const DigitalPharmacySection = () => {
               animate={{ opacity: animationState >= 3 ? 1 : 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <img src="/api/placeholder/48/64" alt="Character" className="rounded-full" />
+            <Image src="/api/placeholder/48/64" alt="Character" width={48} height={64} className="rounded-full" />
             </motion.div>
           </div>
         </div>

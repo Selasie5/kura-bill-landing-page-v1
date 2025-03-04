@@ -11,7 +11,6 @@ import TestimonialSection from "./components/layout/TestimonialSection";
 import FAQ from "./components/ui/FAQ";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Tag, Check } from "lucide-react";
-import Footer from "./components/layout/Footer";
 
 // Grifter font setup
 const headerFont = localFont({
@@ -150,9 +149,6 @@ export default function Home() {
   const { isPharmacist } = useUserRoleStore();
   const [showElements, setShowElements] = useState(false);
   const [openIndex, setOpenIndex] = useState(0);
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? -1 : index);
-  };
 
   const dashboardRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -707,8 +703,8 @@ export default function Home() {
                     Sales Analytics
                   </h3>
                   <p className="text-gray-600">
-                    Track, analyze, and optimize your pharmacy's sales
-                    performance with Kurabill's powerful analytics tools.
+                    pharmacy&apos;s sales
+                    performance with Kurabill&apos;s powerful analytics tools.
                   </p>
                 </div>
 
@@ -807,7 +803,7 @@ Pricing */}
           Find the right plan
         </h2>
         <p className="text-gray-400 text-sm md:w-1/2 text-center">
-          Invest in your Business's future with our comprehensive pharmacy
+        Invest in your Business&apos;s future with our comprehensive pharmacy
           solution. Contact us for pricing details and see how we can help you
           streamline your finances and reach your business goals.
         </p>
