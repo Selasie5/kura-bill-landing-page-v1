@@ -16,7 +16,7 @@ const ServiceCard = ({serviceTitle, serviceDesc}: {
      </div>
         
         <div className='w-1/6 flex justify-end items-center'>
-        <div className="hidden md:block group-hover:transform group-hover:translate-x-2 transition-transform bg-gray-200 w-10 h-10  p-2 rounded-full group-hover:bg-green-500">
+        <div className="hidden md:block group-hover:transform group-hover:-rotate-45 transition-transform bg-gray-200 w-10 h-10  p-2 rounded-full group-hover:bg-green-500">
             <MoveRight size={24} className='text-white' />
         </div>
         </div>

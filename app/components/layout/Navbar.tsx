@@ -38,65 +38,60 @@ const Navbar = () => {
           {/* Desktop Navigation - Hidden on mobile */}
           <div className={`hidden md:flex items-center space-x-4 ${isPharmacist? "text-white": "text-[#808082]"
           }`}>
-            <div className={`flex justify-between items-center gap-10 px-4 py-2 relative ${isPharmacist? "bg-primary": "bg-[#e4eeeb"}`}>
+            <div className="flex items-center p-1 bg-[#e8f1ee] rounded-full w-fit">
               {/* Background Pill that Slides */}
               <motion.div 
-                className={`absolute inset-0 rounded-full `}
-                animate={{
-                  backgroundColor: isPharmacist ? 'rgb(59, 130, 246)' : 'rgb(34, 197, 94)',
-                  x: isPharmacist ? '100%' : '0%'
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30
-                }}
-                style={{ width: '50%' }}
+                 className="absolute rounded-full"
+                 animate={{
+                   x: isPharmacist ? "100%" : "0%"
+                 }}
+                 transition={{
+                   type: "spring",
+                   stiffness: 300,
+                   damping: 30
+                 }}
+                 style={{ 
+                   width: '50%', 
+                   height: '100%',
+                   top: 0,
+                   left: 0,
+                   position: 'absolute',
+                   zIndex: 0 
+                 }}
               />
               
               {/* Patient */}
-              <motion.button 
-                onClick={() => !isPharmacist ? null : toggleRole()}
-                className={`px-4 py-2 rounded-full text-sm font-medium z-10 relative  ${isPharmacist ? "text-white" : "bg-[#808082]"}`}
-                animate={{
-                  color: !isPharmacist ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)'
-                }}
-                whileHover={isPharmacist ? { backgroundColor: 'rgba(229, 231, 235, 0.5)' } : {}}
-                transition={{ duration: 0.3 }}
-              >
-                For Patients
-              </motion.button>
-              
-              {/* Pharmacist Button */}
-              <motion.button 
-                onClick={() => isPharmacist ? null : toggleRole()}
-                className={`px-4 py-2 rounded-full text-sm font-medium z-10 relative  ${isPharmacist ? "text-white" : "text-[#808082]"}`}
-                animate={{
-                  color: isPharmacist ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)'
-                }}
-                whileHover={!isPharmacist ? { backgroundColor: 'rgba(229, 231, 235, 0.5)' } : {}}
-                transition={{ duration: 0.3 }}
-              >
-                For Pharmacists
-              </motion.button>
+              <motion.button
+        onClick={() => toggleRole()}
+        className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${!isPharmacist ? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
+      >
+        Patients
+      </motion.button>
+      
+      <motion.button
+        onClick={() => toggleRole()}
+        className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${isPharmacist? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
+      >
+        Pharmacists
+      </motion.button>
             </div>
             
-            <Link href="#" className="px-3 py-2 rounded-md text-sm font-medium text-[#808082] hover:text-gray-700">
+            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               Our Services
             </Link>
-            <Link href="#" className="px-3 py-2 rounded-md text-sm font-medium text-[#808082] hover:text-gray-700">
+            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               Testimonials
             </Link>
-            <Link href="#" className="px-3 py-2 rounded-md text-sm font-medium text-[#808082] hover:text-gray-700">
+            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               FAQs
             </Link>
-            <Link href="#" className="px-3 py-2 rounded-md text-sm font-medium text-[#808082] hover:text-gray-700">
+            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               About Us
             </Link>
             
             {/* Join Waitlist Button */}
             <motion.button 
-              className="px-5 py-2 rounded-full border border-[#808082] text-gray-700 text-sm font-medium hover:text-white hover:border-none hover:font-bold"
+              className={`px-5 py-2 rounded-full border border-[#808082] text-gray-700 text-sm font-medium hover:text-white hover:border-none hover:font-bold  ${isPharmacist ? "text-white" : "text-[#808082]"}`}
               whileHover={{ backgroundColor: '#336e2e', scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}

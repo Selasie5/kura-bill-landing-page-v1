@@ -163,7 +163,7 @@ const Footer = () => {
 Copyright 2025All Rights Reserved
     </span>
 
-    <div className="hidden md:block  flex-col md:flex-row justify-between items-center gap-10">
+    <div className="hidden md:block  flex-col md:flex-row justify-between items-center space-x-10 gap-10">
     <Link
                   href=""
                   className="text-sm text-black font-norma hover:text-primary-brand"
