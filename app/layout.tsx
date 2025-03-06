@@ -4,7 +4,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-
+import ClientWrapper from "../app/utils/ClientWrapper"
 
 //Initializing font variables
 const Manrope_Font = DM_Sans({
@@ -28,9 +28,12 @@ export default function RootLayout({
       <body
         className={` ${Manrope_Font.className} antialiased`}
       >
+        <ClientWrapper>
         <Navbar/>
         {children}
         <Footer/>
+        </ClientWrapper>
+     
       </body>
      
     </html>

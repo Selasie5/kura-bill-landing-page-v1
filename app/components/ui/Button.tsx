@@ -1,10 +1,12 @@
 import React from 'react'
-
-const Button = () => {
+interface Button {
+  onclick:()=>void
+}
+const Button: React.FC<Button> = ({ onclick }) => {
   return (
-    <div className='bg-primary-brand text-white text-sm font-normal px-7 py-3 rounded-full'>
+    <button className='bg-primary-brand text-white text-sm font-normal px-7 py-3 rounded-full' onClick={onclick}>
       Join Waitlist
-    </div>
+    </button>
   )
 }
 

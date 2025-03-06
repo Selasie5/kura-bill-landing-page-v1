@@ -11,90 +11,34 @@ import TestimonialSection from "./components/layout/TestimonialSection";
 import FAQ from "./components/ui/FAQ";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Tag, Check } from "lucide-react";
+import { useModalStore } from "./store/store";
 
 // Grifter font setup
 const headerFont = localFont({
   src: "../app/fonts/grifterbold700.otf",
 });
 
-const mapElements = [
-  {
-    id: 1,
-    icon: "🦷",
-    label: "Tooth Ache",
-    top: "30%",
-    left: "48%",
-    delay: 0.5,
-  },
-  {
-    id: 2,
-    icon: "❤️",
-    label: "Antibiotics",
-    top: "50%",
-    left: "28%",
-    delay: 1.0,
-  },
-  {
-    id: 3,
-    icon: "💊",
-    label: "Pain Management",
-    top: "45%",
-    left: "68%",
-    delay: 1.5,
-  },
-  { id: 4, icon: "💉", label: "Syrups", top: "73%", left: "52%", delay: 2.0 },
+const mapElements =  [
+  { id: 1, icon: "❤️", label: "Antibiotics", top: 42, left: 22, delay: 1.2 },
+  { id: 2, icon: "🦷", label: "Tooth Ache", top: 28, left: 50, delay: 1.4 },
+  { id: 3, icon: "💊", label: "Pain Management", top: 38, left: 70, delay: 1.6 }, // Moved further right
+  { id: 4, icon: "🧪", label: "Syrups", top: 70, left: 55, delay: 1.8 }
 ];
 
 // Country flags and people
-const countryElements = [
-  {
-    id: 1,
-    flag: "🇺🇸",
-    image: "/usa-people.png",
-    top: "42%",
-    left: "20%",
-    delay: 0.7,
-  },
-  {
-    id: 2,
-    flag: "🇨🇦",
-    image: "/canada-people.png",
-    top: "48%",
-    left: "48%",
-    delay: 1.2,
-  },
-  {
-    id: 3,
-    flag: "🇬🇭",
-    image: "/ghana-people.png",
-    top: "68%",
-    left: "30%",
-    delay: 1.7,
-  },
-  {
-    id: 4,
-    flag: "🇳🇬",
-    image: "/nigeria-people.png",
-    top: "45%",
-    left: "70%",
-    delay: 2.2,
-  },
-  {
-    id: 5,
-    flag: "🇫🇷",
-    image: "/france-people.png",
-    top: "50%",
-    left: "86%",
-    delay: 2.7,
-  },
+const countryElements =  [
+  { id: 1, flag: "🇺🇸", image: "/usa-people.png", top: 30, left: 20, delay: 2.0 },
+  { id: 2, flag: "🇨🇦", image: "/canada-people.png", top: 40, left: 40, delay: 2.2 },
+  { id: 3, flag: "🇳🇬", image: "/nigeria-people.png", top: 55, left: 46, delay: 2.4 },
+  { id: 4, flag: "🇬🇭", image: "/ghana-people.png", top: 62, left: 25, delay: 2.6 },
+  { id: 5, flag: "🇫🇷", image: "/france-people.png", top: 30, left: 60, delay: 2.8 } // Moved further left
 ];
 
 // Coin elements -
-const coinElements = [
-  { id: 1, top: "38%", left: "12%", delay: 1.0, size: 80 },
-  { id: 2, top: "62%", left: "16%", delay: 1.8, size: 100 },
-  { id: 3, top: "38%", left: "85%", delay: 2.5, size: 70 },
-];
+const coinElements =  [
+  { id: 1, size: 80, top: 50, left: 8, delay: 1.0 },  // Left side of the map
+  { id: 2, size: 80, top: 50, left: 92, delay: 1.5 }  // Right side of the map
+]
 
 const servicesData = {
   title: "Global Medication Management and Payment System",
@@ -150,6 +94,9 @@ export default function Home() {
   const [showElements, setShowElements] = useState(false);
   // const [openIndex, setOpenIndex] = useState(0);
 
+
+  const { openModal } = useModalStore();
+
   const dashboardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: dashboardRef,
@@ -172,153 +119,164 @@ export default function Home() {
 
   return !isPharmacist ? (
     <main className="overflow-hidden space-y-20">
-      <section className="flex flex-col items-center min-h-screen bg-[#F1FBFB] relative">
-        {/* Header Content */}
-        <div className="gap-5 flex flex-col items-center justify-center pt-20 pb-10 px-4 z-30 max-w-6xl mx-auto w-full">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className={`${headerFont.className} text-[2.5rem] md:text-[3rem] leading-tight text-center`}
-          >
-            Send care across borders <br />
-            Buy medications from anywhere.
-          </motion.h1>
+ {/* Map Area with Animations */}
+<section className="flex flex-col items-center min-h-screen bg-[#F1FBFB] relative">
+  {/* Header Content */}
+  <div className="gap-5 flex flex-col items-center justify-center pt-20 pb-10 px-4 z-30 max-w-6xl mx-auto w-full">
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className={`${headerFont.className} text-[2.5rem] md:text-[3rem] leading-tight text-center`}
+    >
+      Send care across borders <br />
+      Buy medications from anywhere.
+    </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-subtext-gray leading-normal text-center w-full md:w-3/4 max-w-3xl"
-          >
-            Bridge the distance and show you care quickly and securely purchase
-            medications for your loved ones abroad using stable coin payments.
-          </motion.p>
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="text-subtext-gray leading-normal text-center w-full md:w-3/4 max-w-3xl"
+    >
+      Bridge the distance and show you care quickly and securely purchase
+      medications for your loved ones abroad using stable coin payments.
+    </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <Button />
-          </motion.div>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+    >
+      <Button onclick={openModal} />
+    </motion.div>
+  </div>
 
-        {/* Map Area with Animations */}
-        <div className="relative w-full flex-grow flex flex-col">
-          {/* World map background */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 z-10"
-          >
+  {/* Map Area with Animations */}
+  <div className="relative w-full h-[90vh] flex-grow flex flex-col overflow-hidden">
+    {/* World map background */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="absolute inset-0 z-10 flex items-center justify-center"
+    >
+      <div className="relative w-full h-full">
+        <Image
+          src="/Earth.png"
+          alt="World map"
+          fill
+          className="object-contain opacity-90"
+          priority
+        />
+      </div>
+    </motion.div>
+
+    {/* Map elements - medication categories - better spaced */}
+    {showElements && mapElements.map((item) => (
+      <motion.div
+        key={item.id}
+        initial={{ opacity: 0, scale: 0, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: item.delay }}
+        className="absolute z-20 bg-white rounded-full py-2 px-4 shadow-md flex items-center gap-2"
+        style={{ 
+          top: `${item.top}%`, 
+          left: `${item.left}%`,
+          transform: 'translate(-50%, -50%)' 
+        }}
+      >
+        <span>{item.icon}</span>
+        <span className="text-sm font-medium">{item.label}</span>
+      </motion.div>
+    ))}
+
+    {/* Country people with flags - better spaced */}
+    {showElements && countryElements.map((item) => (
+      <motion.div
+        key={item.id}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: item.delay }}
+        className="absolute z-20"
+        style={{ 
+          top: `${item.top}%`, 
+          left: `${item.left}%`,
+          transform: 'translate(-50%, -50%)' 
+        }}
+      >
+        <div className="relative">
+          {/* <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+            <span className="text-2xl">{item.flag}</span>
+          </div> */}
+          <div className="w-16 h-16 rounded-full bg-blue-100 overflow-hidden border-2 border-white">
             <Image
-              src="/Earth.png"
-              alt="World map"
-              fill
-              className="object-contain opacity-80"
-              priority
+              src={item.image || "/placeholder-person.png"}
+              alt="Person"
+              width={64}
+              height={64}
+              className="object-cover"
             />
-          </motion.div>
-
-          {/* Map elements animation */}
-          {showElements &&
-            mapElements.map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: item.delay }}
-                className="absolute z-20 bg-white rounded-full py-2 px-4 shadow-md flex items-center gap-2"
-                style={{ top: item.top, left: item.left }}
-              >
-                <span>{item.icon}</span>
-                <span className="text-sm font-medium">{item.label}</span>
-              </motion.div>
-            ))}
-
-          {/* Country people animation */}
-          {showElements &&
-            countryElements.map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: item.delay }}
-                className="absolute z-20"
-                style={{ top: item.top, left: item.left }}
-              >
-                <div className="relative">
-                  <div className="absolute -top-8 -right-2">
-                    <span className="text-2xl">{item.flag}</span>
-                  </div>
-                  <div className="w-16 h-16 rounded-full bg-blue-100 overflow-hidden">
-                    <Image
-                      src={item.image || "/placeholder-person.png"}
-                      alt="Person"
-                      width={64}
-                      height={64}
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-
-          {/* Coin animations */}
-          {showElements &&
-            coinElements.map((item) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 50, rotate: 0 }}
-                animate={{
-                  opacity: [0, 1, 1, 0.8],
-                  y: [50, 0, -20, -40],
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 3,
-                  delay: item.delay,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-                className="absolute z-20"
-                style={{ top: item.top, left: item.left }}
-              >
-                <div className="relative w-12 h-12">
-                  <Image
-                    src="/stablecoin.png"
-                    alt="Coin"
-                    width={item.size}
-                    height={item.size}
-                    className="object-contain"
-                  />
-                </div>
-              </motion.div>
-            ))}
-
-          {/* Mountain background - Positioned at the bottom */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 z-30 mt-auto"
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.2, delay: 0.2 }}
-          >
-            <div className="relative w-full h-[200px]">
-              <Image
-                src="/Mountain-bg.png"
-                alt="Mountain background"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </motion.div>
+    ))}
 
-      <section>
+    {/* Coin animations - only two coins at extreme ends */}
+    {showElements && coinElements.map((item) => (
+      <motion.div
+        key={item.id}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: item.delay }}
+        className="absolute z-20"
+        style={{ 
+          top: `${item.top}%`, 
+          left: `${item.left}%`,
+          transform: 'translate(-50%, -50%)' 
+        }}
+      >
+        <motion.div
+          className="relative"
+          animate={{ rotateY: 360 }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear"
+          }}
+        >
+          <Image
+            src="/stablecoin.png"
+            alt="Coin"
+            width={item.size}
+            height={item.size}
+            className="object-contain"
+          />
+        </motion.div>
+      </motion.div>
+    ))}
+
+    {/* Mountain background - Positioned at the bottom */}
+    <motion.div
+      className="absolute bottom-0 left-0 right-0 z-30 mt-auto"
+      initial={{ y: 100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 1.2, delay: 0.2 }}
+    >
+      <div className="relative w-full h-[200px]">
+        <Image
+          src="/Mountain-bg.png"
+          alt="Mountain background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+    </motion.div>
+  </div>
+</section>
+ <section>
         <div className="">
           <h2
             className={`${headerFont.className} text-3xl font-bold text-center mb-4`}
@@ -540,7 +498,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mb-16"
           >
-            <Button />
+            <Button onclick={openModal} />
           </motion.div>
 
           {/* Map visualization with overlapping dashboard */}

@@ -65,14 +65,14 @@ const Navbar = () => {
         onClick={() => toggleRole()}
         className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${!isPharmacist ? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
       >
-        Patients
+      For  Patients
       </motion.button>
       
       <motion.button
         onClick={() => toggleRole()}
         className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${isPharmacist? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
       >
-        Pharmacists
+       For  Pharmacists
       </motion.button>
             </div>
             
@@ -124,47 +124,43 @@ const Navbar = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               {/* Role Toggle Buttons */}
-              <div className="flex space-x-2 mb-3 relative">
+              <div className="flex justify-center items-center w-full space-x-2 mb-3 relative">
                 {/* Sliding Background for Mobile Toggle */}
                 <motion.div 
-                  className="absolute inset-y-0 rounded-md"
-                  animate={{
-                    backgroundColor: isPharmacist ? 'rgb(59, 130, 246)' : 'rgb(34, 197, 94)',
-                    x: isPharmacist ? '50%' : '0%'
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30
-                  }}
-                  style={{ width: '50%' }}
-                />
-                
-                <motion.button 
-                  onClick={() => {
-                    if (isPharmacist) toggleRole();
-                  }}
-                  className="flex-1 px-3 py-2 rounded-md text-sm font-medium z-10 relative"
-                  animate={{
-                    color: !isPharmacist ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)'
-                  }}
-                >
-                  For Patients
-                </motion.button>
-                
-                <motion.button 
-                  onClick={() => {
-                    if (!isPharmacist) toggleRole();
-                  }}
-                  className="flex-1 px-3 py-2 rounded-md text-sm font-medium z-10 relative"
-                  animate={{
-                    color: isPharmacist ? 'rgb(255, 255, 255)' : 'rgb(55, 65, 81)'
-                  }}
-                >
-                  For Pharmacists
-                </motion.button>
-              </div>
+                 className="absolute rounded-full"
+                 animate={{
+                   x: isPharmacist ? "100%" : "0%"
+                 }}
+                 transition={{
+                   type: "spring",
+                   stiffness: 300,
+                   damping: 30
+                 }}
+                 style={{ 
+                   width: '50%', 
+                   height: '100%',
+                   top: 0,
+                   left: 0,
+                   position: 'absolute',
+                   zIndex: 0 
+                 }}
+              />
               
+              {/* Patient */}
+              <motion.button
+        onClick={() => toggleRole()}
+        className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${!isPharmacist ? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
+      >
+        Patients
+      </motion.button>
+      
+      <motion.button
+        onClick={() => toggleRole()}
+        className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${isPharmacist? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
+      >
+        Pharmacists
+      </motion.button>
+            </div>
               {/* Other Navigation Links with staggered animation */}
               <motion.div
                 variants={{
@@ -197,7 +193,7 @@ const Navbar = () => {
               
               {/* Join Waitlist Button - Full Width on Mobile with animation */}
               <motion.button 
-                className="w-full mt-3 px-4 py-2 rounded-md bg-purple-600 text-white font-medium"
+                className="bg-primary-brand w-full text-white text-sm font-normal px-7 py-3 rounded-full"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.3 }}
