@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Portal from "../../utils/Portal";
+import { Input } from "@/components/ui/input";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -65,10 +66,11 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
         className="bg-white rounded-lg p-8 w-full max-w-md relative"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-2xl font-bold mb-6">Join the Waitlist</h2>
+        <h2 className="text-2xl font-bold mb-2">Join the Waitlist</h2>
+        <p className="text-gray-400 text-sm font-medium mb-6">Be the first to know when we launch</p>
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
         <form onSubmit={joinWaitlist} className="space-y-4">
-          <input
+          <Input
             type="text"
             placeholder="First Name"
             value={firstName}
@@ -76,7 +78,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
             className="input"
             required
           />
-          <input
+          <Input
             type="text"
             placeholder="Last Name"
             value={lastName}
@@ -84,7 +86,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
             className="input"
             required
           />
-          <input
+          <Input
             type="email"
             placeholder="Email"
             value={email}
@@ -105,7 +107,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
               className="px-4 py-2 text-sm text-white bg-primary-brand rounded-md hover:bg-secondary-brand"
               disabled={isLoading}
             >
-              {isLoading ? "Submitting..." : "Submit"}
+              {isLoading ? <span className="loader"></span> : "Submit"}
             </button>
           </div>
         </form>
