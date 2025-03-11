@@ -5,14 +5,20 @@ import Image from "next/image";
 import { useUserRoleStore } from '../../store/store';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModalStore } from '../../store/store';
+
 
 const Navbar = () => {
+
+  const { openModal } = useModalStore();
   const { isPharmacist, toggleRole } = useUserRoleStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   return (
+
+   
     <motion.nav 
       className="w-full p-4"
       animate={{
@@ -95,6 +101,7 @@ const Navbar = () => {
               whileHover={{ backgroundColor: '#336e2e', scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
+              onClick = {openModal}
             >
               Join Waitlist
             </motion.button>
@@ -199,6 +206,7 @@ const Navbar = () => {
                 transition={{ delay: 0.3, duration: 0.3 }}
                 whileHover={{ backgroundColor: 'rgb(126, 34, 206)' }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Join Waitlist
               </motion.button>

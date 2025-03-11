@@ -416,6 +416,7 @@ export default function Home() {
                 className="bg-primary-brand text-white text-sm font-normal px-7 py-3 rounded-full"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
+                onClick ={openModal}
               >
                 Join Waitlist
               </motion.button>
@@ -797,7 +798,8 @@ Pricing */}
                 <span>Get a fully designed Admin Office</span>
               </div>
             </div>
-            <button className=" bg-white rounded-full w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-secondary-brand hover:text-white mt-5">
+            <button className=" bg-white rounded-full w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-secondary-brand hover:text-white mt-5" 
+            onClick={openModal}>
               Join the Waitlist
             </button>
           </div>
@@ -830,7 +832,9 @@ Pricing */}
                 <span>Add other employees</span>
               </div>
             </div>
-            <button className=" bg-black rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary-brand hover:text-white mt-5">
+            <button className=" bg-black rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary-brand hover:text-white mt-5"
+             onClick ={openModal}
+            >
               Join the Waitlist
             </button>
           </div>
@@ -865,7 +869,9 @@ Pricing */}
                 <span>Add other employees</span>
               </div>
             </div>
-            <button className=" bg-primary-brand rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary-brand hover:text-white mt-5">
+            <button className=" bg-primary-brand rounded-full w-full px-4 py-2 border border-gray-300 text-white hover:bg-secondary-brand hover:text-white mt-5"
+             onClick ={openModal}
+            >
               Join the Waitlist
             </button>
           </div>

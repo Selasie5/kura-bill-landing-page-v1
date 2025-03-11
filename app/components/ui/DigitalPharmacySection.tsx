@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import localFont from 'next/font/local';
-import Image from "next/image"
+import Image from "next/image";
+import { useModalStore } from '@/app/store/store';
 // Grifter font setup
 const headerFont = localFont({
   src: "../../fonts/grifterbold700.otf",
@@ -9,7 +10,7 @@ const headerFont = localFont({
 
 export const DigitalPharmacySection = () => {
   const [animationState, setAnimationState] = useState(0);
-  
+  const {openModal} = useModalStore();
   // Start animation automatically when component mounts
   useEffect(() => {
     startAnimation();
@@ -48,6 +49,7 @@ export const DigitalPharmacySection = () => {
             className="bg-primary-brand text-white text-sm font-normal px-7 py-3 rounded-full"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
+            onClick = {openModal}
           >
             Join Waitlist
           </motion.button>

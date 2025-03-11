@@ -1,10 +1,15 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
+import { useModalStore } from "@/app/store/store";
+
 
 const Footer = () => {
+  const { openModal } = useModalStore();
   return (
+   
     <footer className="bg-white h-auto py-10 px-5 md:p-10 ">
       <div className="bg-secondary-brand w-auto  h-auto flex flex-col justify-between items-center rounded-xl p-10 gap-14">
         <div className="w-full flex flex-col md:flex-row justify-between items-start md:gap-0 gap-10">
@@ -152,9 +157,11 @@ const Footer = () => {
               </div>
 
               <div className="w-full md:w-auto">
-              <div className='bg-white text-secondary-brand text-sm font-normal px-7 py-3 rounded-full text-center'>
+              <button className='bg-white text-secondary-brand text-sm font-normal px-7 py-3 rounded-full text-center'
+              onClick={openModal}
+              >
       Join Waitlist
-    </div>
+    </button>
               </div>
         </div>
       </div>
@@ -197,6 +204,7 @@ Copyright 2025All Rights Reserved
         </div>
       </div>
     </footer>
+    
   );
 };
 
