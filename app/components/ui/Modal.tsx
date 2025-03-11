@@ -1,5 +1,7 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import Portal from "../../utils/Portal";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -7,9 +9,48 @@ interface WaitlistModalProps {
 }
 
 const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
   if (!isOpen) return null;
 
+  const joinWaitlist = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/resend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          audienceId: "931cefd9-715f-4ce6-a66c-120a8461c18c",
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed to join waitlist");
+
+      setEmail("");
+      setFirstName("");
+      setLastName("");
+      onClose();
+    } catch (err) {
+      setError("Failed to join waitlist. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
+    <Portal>
+
+  
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -21,53 +62,56 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -50, opacity: 0 }}
-        className="bg-white rounded-lg p-8 w-full max-w-md relative z-60"
+        className="bg-white rounded-lg p-8 w-full max-w-md relative"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-2xl font-bold mb-6">Join the Waitlist</h2>
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">First Name</label>
-            <input
-              type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-brand focus:border-primary-brand"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Last Name</label>
-            <input
-              type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-brand focus:border-primary-brand"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-brand focus:border-primary-brand"
-              required
-            />
-          </div>
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+        <form onSubmit={joinWaitlist} className="space-y-4">
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="input"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="input"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="input"
+            required
+          />
           <div className="flex justify-end">
             <button
               type="button"
               onClick={onClose}
-              className="mr-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+              className="mr-2 px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-sm font-medium text-white bg-primary-brand rounded-md hover:bg-secondary-brand"
+              className="px-4 py-2 text-sm text-white bg-primary-brand rounded-md hover:bg-secondary-brand"
+              disabled={isLoading}
             >
-              Submit
+              {isLoading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>
       </motion.div>
     </motion.div>
+    </Portal>
   );
 };
 
