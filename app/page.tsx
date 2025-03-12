@@ -424,7 +424,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section>
+      <section className="py-16 px-4 md:px-8  relative overflow-hidden">
         <DigitalPharmacySection />
       </section>
 
@@ -457,7 +457,7 @@ export default function Home() {
       <section className="flex flex-col justify-center items-center">
         <h2
           className={`${headerFont.className}
-            text-3xl font-bold
+            text-3xl font-bold text-center
             `}
         >
           Frequently Aksed Questions
