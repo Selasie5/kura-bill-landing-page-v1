@@ -428,7 +428,9 @@ export default function Home() {
         <DigitalPharmacySection />
       </section>
 
-      <section className="flex flex-col justify-center items-center md:gap-3 bg-[#F4F6F5] md:p-20 p-5">
+      <section 
+      id="patient-services"
+      className="flex flex-col justify-center items-center md:gap-3 bg-[#F4F6F5] md:p-20 p-5">
         <div className="px-4 py-2 rounded-full bg-white border border-primary-brand">
           <span className="text-sm ">Our Services</span>
         </div>
@@ -454,7 +456,9 @@ export default function Home() {
       </section>
       <TestimonialSection />
 
-      <section className="flex flex-col justify-center items-center">
+      <section
+      id="patient-FAQS"
+      className="flex flex-col justify-center items-center">
         <h2
           className={`${headerFont.className}
             text-3xl font-bold text-center
@@ -752,7 +756,9 @@ export default function Home() {
       </section>
       {/* 
 Pricing */}
-      <section className="flex flex-col items-center justify-center gap-4 px-5">
+      <section
+      id="pricing"
+      className="flex flex-col items-center justify-center gap-4 px-5">
         {/* Tag */}
         <span className="flex justify-center items-center text-sm bg-gray-200 border border-gray-400 px-3 py-2 gap-3 rounded-full">
           <Tag size={12} />
@@ -879,7 +885,9 @@ Pricing */}
       </section>
 
       <TestimonialSection />
-      <section className="flex flex-col justify-center items-center px-5">
+      <section 
+      id="Pharmacist-FAQS"
+      className="flex flex-col justify-center items-center px-5">
         <h2
           className={`${headerFont.className}
             text-3xl font-bold

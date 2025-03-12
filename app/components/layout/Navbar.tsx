@@ -82,18 +82,18 @@ const Navbar = () => {
       </motion.button>
             </div>
             
-            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
+            <Link href={isPharmacist ? "#pricing" : "#patient-services"} className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               Our Services
             </Link>
-            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
+            <Link href={isPharmacist ? "#testimonials" : "#testimonials"} className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               Testimonials
             </Link>
-            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
+            <Link href={isPharmacist ? "#Pharmacist-FAQS" : "#patient-FAQS"} className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               FAQs
             </Link>
-            <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
+            {/* <Link href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${isPharmacist ? "text-white hover:text-primary-brand hover:font-bold" : "text-[#808082] hover:text-primary-brand"}`}>
               About Us
-            </Link>
+            </Link> */}
             
             {/* Join Waitlist Button */}
             <motion.button 
@@ -156,19 +156,18 @@ const Navbar = () => {
               {/* Patient */}
               <motion.button
         onClick={() => toggleRole()}
-        className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${!isPharmacist ? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
+        className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${!isPharmacist ? "bg-[#3A8046] text-white" : "bg-transparent text-white"}`}
       >
-        Patients
+        For Patients
       </motion.button>
       
       <motion.button
         onClick={() => toggleRole()}
         className={`px-4 py-2 rounded-full text-sm font-medium relative z-10 whitespace-nowrap ${isPharmacist? "bg-[#3A8046] text-white" : "bg-transparent text-gray-600"}`}
       >
-        Pharmacists
+       For  Pharmacists
       </motion.button>
             </div>
-              {/* Other Navigation Links with staggered animation */}
               <motion.div
                 variants={{
                   hidden: { opacity: 0 },
@@ -182,20 +181,41 @@ const Navbar = () => {
                 initial="hidden"
                 animate="show"
               >
-                {['Our Services', 'Testimonials', 'FAQs', 'About Us'].map((item, index) => (
-                  <motion.a 
-                    key={index}
-                    href="#"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-200"
-                    variants={{
-                      hidden: { opacity: 0, y: 10 },
-                      show: { opacity: 1, y: 0 }
-                    }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {item}
-                  </motion.a>
-                ))}
+             
+           
+{[isPharmacist ? "Pricing" : "Services", 'Testimonials', 'FAQs', 'About Us'].map((item, index) => (
+  <motion.div key={index}>
+    <Link
+      href={
+        item === "FAQs"
+          ? isPharmacist
+            ? "#Pharmacist-FAQS" 
+            : "#patient-FAQS" 
+          : item === "Pricing"
+          ? "#pricing" 
+          : item === "Services"
+          ? "#patient-services"
+          : item === "Testimonials"
+          ? "#testimonials"
+          : "/about-us" 
+      }
+      passHref
+    >
+      <motion.a
+        className={`block px-3 py-2 rounded-md text-base font-medium ${
+          isPharmacist ? "text-white" : "text-[#808082]"
+        }`}
+        variants={{
+          hidden: { opacity: 0, y: 10 },
+          show: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.2 }}
+      >
+        {item}
+      </motion.a>
+    </Link>
+  </motion.div>
+))}
               </motion.div>
               
               {/* Join Waitlist Button - Full Width on Mobile with animation */}
@@ -204,7 +224,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.3 }}
-                whileHover={{ backgroundColor: 'rgb(126, 34, 206)' }}
+                whileHover={{ backgroundColor: '#1A402B' }}
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >

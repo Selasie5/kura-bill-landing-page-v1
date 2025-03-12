@@ -32,29 +32,29 @@ const Footer = () => {
               <span className="text-white font-bold text-md">For Patients</span>
               <div className="flex flex-col jutify-start items-start gap-3">
                 <Link
-                  href=""
+                  href="#patient-services"
                   className="text-sm text-white font-norma hover:text-primary-brand"
                 >
                   Our Services
                 </Link>
                 <Link
-                  href=""
+                  href="testimonials"
                   className="text-sm text-white font-norma hover:text-primary-brand"
                 >
                   Testimonials
                 </Link>
                 <Link
-                  href=""
+                  href="patient-FAQS"
                   className="text-sm text-white font-norma hover:text-primary-brand"
                 >
                   FAQs
                 </Link>
-                <Link
+                {/* <Link
                   href=""
                   className="text-sm text-white font-norma hover:text-primary-brand"
                 >
                   About Us
-                </Link>{" "}
+                </Link>{" "} */}
               </div>
             </div>
 
@@ -65,29 +65,29 @@ const Footer = () => {
               </span>
               <div className="flex flex-col jutify-start items-start gap-3">
                 <Link
-                  href=""
-                  className="text-sm text-white font-norma hover:text-primary-brand"
+                  href="#pricing"
+                  className="text-sm text-white font-normal hover:text-primary-brand"
                 >
                   Pricing
                 </Link>
                 <Link
-                  href=""
-                  className="text-sm text-white font-norma hover:text-primary-brand"
+                  href="#testimonials"
+                  className="text-sm text-white font-normal hover:text-primary-brand"
                 >
                   Testimonials
                 </Link>
                 <Link
-                  href=""
-                  className="text-sm text-white font-norma hover:text-primary-brand"
+                  href="#Pharmacist-FAQS"
+                  className="text-sm text-white font-normal hover:text-primary-brand"
                 >
                   FAQs
                 </Link>
-                <Link
+                {/* <Link
                   href=""
-                  className="text-sm text-white font-norma hover:text-primary-brand"
+                  className="text-sm text-white font-normal hover:text-primary-brand"
                 >
                   About Us
-                </Link>{" "}
+                </Link>{" "} */}
               </div>
             </div>
             <div className="flex flex-col justify-start items-start gap-4">

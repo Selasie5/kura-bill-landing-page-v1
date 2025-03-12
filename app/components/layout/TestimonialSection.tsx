@@ -38,7 +38,9 @@ const TestimonialSection = () => {
   ]
 
   return (
-    <section className="flex flex-col justify-center items-center gap-6 py-12">
+    <section
+    id="testimonials"
+     className="flex flex-col justify-center items-center gap-6 py-12">
       <h2 className={`${headerFont.className} text-3xl text-center`}>
         Testimonials
       </h2>
