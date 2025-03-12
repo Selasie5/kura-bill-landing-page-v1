@@ -42,6 +42,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
       setLastName("");
       onClose();
     } catch (err) {
+      console.log(err);
       setError("Failed to join waitlist. Please try again.");
     } finally {
       setIsLoading(false);
