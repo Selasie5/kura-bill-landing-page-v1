@@ -27,13 +27,13 @@ const TestimonialSection = () => {
       name: "John Doe",
       testimonial: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       date: "June 22, 2024",
-      profileImg: "/profile2.svg"
+      profileImg: "/profile1.svg"
     },
     {
       name: "Emily Smith",
       testimonial: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       date: "July 3, 2024",
-      profileImg: "/profile3.svg"
+      profileImg: "/profile1.svg"
     }
   ]
 
