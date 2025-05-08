@@ -281,12 +281,12 @@ export default function Home() {
           <h2
             className={`${headerFont.className} text-3xl font-bold text-center mb-4`}
           >
-            Trusted By
+            Supported By
           </h2>
           <div className="flex justify-center items-center gap-4 flex-wrap">
             <div className="flex justify-center items-center w-32 h-32">
               <Image
-                src="/logo1.svg"
+                src="/3.png"
                 alt="Logo 1"
                 width={80}
                 height={80}
@@ -295,7 +295,7 @@ export default function Home() {
             </div>
             <div className="flex justify-center items-center w-32 h-32">
               <Image
-                src="/logo2.svg"
+                src="/db.png"
                 alt="Logo 2"
                 width={80}
                 height={80}
@@ -304,35 +304,8 @@ export default function Home() {
             </div>
             <div className="flex justify-center items-center w-32 h-32">
               <Image
-                src="/logo3.svg"
+                src="/ii.jpeg"
                 alt="Logo 3"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <div className="flex justify-center items-center w-32 h-32">
-              <Image
-                src="/logo4.svg"
-                alt="Logo 4"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <div className="flex justify-center items-center w-32 h-32">
-              <Image
-                src="/logo5.svg"
-                alt="Logo 5"
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </div>
-            <div className="flex justify-center items-center w-32 h-32">
-              <Image
-                src="/logo6.svg"
-                alt="Logo 6"
                 width={80}
                 height={80}
                 className="object-contain"
